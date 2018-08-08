@@ -1,21 +1,58 @@
 // 1. Create a function called "sum" that takes an array of numbers and
 // returns the sum of those numbers.
 
-function sum (numbers) {
-  console.log('numbers', numbers)
-  return 0
+function sum(numbers) {
+  var total = 0;
+  for (var i = 0; i < numbers.length; i++) {
+      total += numbers[i];
+  }
+  return ("total sum", total)
 }
 
 // 2. Create a function called "average" that takes an array of numbers
 // and returns the average of those numbers.
+
+function average(numbers) {
+  var total = 0;
+  if (numbers.length === 0) {return undefined} 
+  for (var i = 0; i < numbers.length; i++) {
+        {total += numbers[i];
+      }
+  }
+  return total / numbers.length;
+}
 
 // 3. Create a function called "intersection" that takes two arrays and
 // returns a new array that contains the elements found in both arrays.
 // The order they are in does not matter, but no duplicates should be
 // in the returned array, even if they were in the input.
 
+function intersection (arrayone,arraytwo) {
+  var arraynew = []
+
+ for (var i=0; i< arrayone.length; i++) {
+   for (var i2=0; i2< arraytwo.length; i2++) {
+    if (arrayone[i] === arraytwo[i2]) {
+      arraynew.push(arrayone[i]);
+     }
+   }
+    
+  }
+  return arraynew
+}
 // 4. Create a function called "minimum" that takes an array of numbers and
 // returns the smallest number in that array.
+
+function minimum(numbers) {
+var min;
+
+for (var i = 0; i < numbers.length; i++) {
+  if (typeof(min) === 'undefined' || numbers[i] < min) {
+    min = numbers[i];
+  }}
+  return min
+}
+
 
 // 5. There are many techniques to sort arrays in programming. Your programming
 // language will likely include the ability to do this. We are going to
@@ -29,6 +66,25 @@ function sum (numbers) {
 //
 // Create a function called selectionSort that takes an array of numbers and returns
 // a sorted array using the above technique.
+function selectionSort(numbers) {
+  var arraymanage = numbers.slice(0);
+  var arraysort = []
+  var index;
+  var smallest;
+  if (numbers.length === 0) {
+  return numbers;
+}
+  if (numbers.length === 1) {
+  return [2];
+}
+  for (var i=0; i<=numbers.length-1; i++) {
+    smallest = minimum(arraymanage);
+    arraysort.push(smallest);
+    index = arraymanage.indexOf(smallest)
+    arraymanage.splice(index,1);
+  }
+  return arraysort;
+}
 //
 // Note 1: You do not actually want to delete things from the original array. You
 // should copy it first. To copy an array, use the following code:
@@ -43,11 +99,38 @@ function sum (numbers) {
 
 // 6. Create a function called "createUser" that takes a name and a Date object
 // and returns an object with the keys "name" and "dob" (date of birth) with
-// those values.
+// those values
+function createUser (valor_1,valor_2) {
+  var user = { name  : valor_1,
+                 dob: valor_2,  }
+        return user;
+  }
+  
 
 // 7. Create a function called "calculateAge" that takes a user created from
 // createUser and a Date object considered the current date, and calculates the user's
 // age in years on that date. You can use your code from yesterday's homework.
+function calculateAge(valor_1,valor_2) {
+
+  var dateOfBirth = valor_2;
+  var dateToCalculate = new Date();
+    var calculateYear = dateToCalculate.getFullYear();
+    var calculateMonth = dateToCalculate.getMonth(); 
+    var calculateDay = dateToCalculate.getDate();
+
+    var birthYear = dateOfBirth.getFullYear();
+    var birthMonth = dateOfBirth.getMonth();
+    var birthDay = dateOfBirth.getDate();
+
+    var age = calculateYear - birthYear 
+    var ageMonth =  calculateMonth - birthMonth
+    var ageDay =   calculateDay - birthDay
+
+    if (ageMonth < 0 || (ageMonth == 0 && ageDay < 0)) {
+        age = age - 1
+    }
+    return age;
+}
 
 // 8. Create a function called "addAge" that takes a user created from createUser
 // and a Date object and adds a new key on the user object, "age", with the age
